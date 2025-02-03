@@ -32,6 +32,37 @@ Example Responses:
 
 Add the required logic below to complete the API.
 */
+app.get('/assistant/greet', (req, res) => {
+  const name = req.query.name ;
+ 
+  const week = ["Sunday","Saturday","Friday","Thursday","Wednesday","Tuesday","Monday"]
+
+  const date = new Date().getDay();
+
+  const currday = week[date];
+ 
+  if(currday === "Monday"){
+    res.send({
+      "welcomeMessage": `Hello, ${name}! Welcome to our assistant app!`,
+      "dayMessage": "Happy Monday! Start your week with energy!"
+    });
+  }
+
+  else if(currday === "Friday"){
+    res.send({
+      "welcomeMessage": `Hello, ${name}! Welcome to our assistant app!`,
+      "dayMessage": "It's Friday! The weekend is near!"
+    });
+  }
+  
+  else{
+    res.send({
+      "welcomeMessage": `Hello, ${name}! Welcome to our assistant app!`,
+      "dayMessage": "Have a wonderful day!"
+    });
+  }
+  
+});
 
 const PORT = 3000;
 app.listen(PORT, () => {
